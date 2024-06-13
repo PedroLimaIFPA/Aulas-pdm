@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Storage</title>
+</head>
+
+<body>
+  <h2><I>Armazenamento Local</I></h2>
+  <label for="inputData">Digite um valor:</label>
+  <input type="text" id="inputData">
+  <button onclick="salvarValor()"><i>Salvar</i></button>
+  <button onclick="limparLocalStorage()"><i>Limpar Local Storage</i></button>
+  <div id="resultado"></div>
+
+  <script>
+    // Função para salvar um valor no localStorage
+    function salvarValor() {
+      const valor = document.getElementById('inputData').value;
+      localStorage.setItem('meuValor', valor);
+      exibirValor();
+    }
+
+    // Função para exibir o valor salvo no localStorage
+    function exibirValor() {
+      const valorSalvo = localStorage.getItem('meuValor');
+      const resultadoDiv = document.getElementById('resultado');
+      resultadoDiv.innerHTML = 'Valor salvo no localStorage: ' + valorSalvo;
+    }
+
+    // Função para limpar o localStorage
+    function limparLocalStorage() {
+      localStorage.removeItem('meuValor');
+      exibirValor(); // Atualizar exibição após limpar
+    }
+
+    // Ao carregar a página, exibir o valor salvo (se existir)
+    window.onload = function() {
+      exibirValor();
+    };
+  </script>
+
+</body>
+</html>

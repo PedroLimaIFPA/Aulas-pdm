@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notas e Lembretes</title>
+</head>
+<body>
+<h1>Notas e Lembretes</h1>
+<label for="note">Digite sua nota:</label><br>
+<textarea id="note" rows="4" cols="50"></textarea><br>
+<button onclick="saveNote()">Salvar Nota (localStorage)</button>
+<button onclick="saveSessionNote()">Salvar Nota (sessionStorage)</button>
+<button onclick="displayNotes()">Mostrar Notas</button>
+<ul id="notesList"></ul>
+
+<script>
+    var notaChaveEdicao = '';
+    var notaSeq = localStorage.getItem('notaSeq');
+    if(notaSeq == underfined){
+        var notaSeq = 0;
+        localStorage.setItem('notaSeq', notaSeq);
+    }
+    function salvar{
+        if (notaChaveEdicao !=''){
+            localStorage.setItem(notaChaveEdicao,document.getElementById('nota').value);
+            notaChaveEdicao = '';
+        }else{
+            notaSeq++;
+            localStorage.setItem('nota'+notaSeq,document.getElementById('nota').value);
+            localStorage.setItem('notaSeq', notaSeq);
+        }
+        document.getElementById('nota').value = '';
+        listar();
+    }
+    function listar(){
+        document.getElementById('listaDeNotas').innerHTML = '';
+        for (x=1; x<=notaSeq; x++){
+            if (localStorage.getItem('nota'+x) != undefined ){
+                document.getElementById('listaDeNotas').
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
